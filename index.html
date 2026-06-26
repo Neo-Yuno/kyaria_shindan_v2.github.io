@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>職種マップ診断 | RIASECプロトタイプ</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="site-header">
+      <div class="brand">
+        <div class="brand-mark">CM</div>
+        <div>
+          <p class="eyebrow">RIASEC Career Prototype</p>
+          <h1>職種マップ診断</h1>
+        </div>
+      </div>
+      <div class="header-note">学生向け就職サイト試作</div>
+    </header>
+
+    <main>
+      <section id="start-screen" class="panel hero">
+        <div class="hero-copy">
+          <p class="eyebrow">3〜5分</p>
+          <h2>質問に答えると、向いている職種タイプを表示します。</h2>
+          <p class="lead">
+            RIASECの6軸を使って、興味・行動傾向から「向きやすい職種」「伸ばすべきスキル」「大学中にやること」を出します。
+          </p>
+          <div class="feature-grid">
+            <div>
+              <strong>分岐あり</strong>
+              <span>序盤の傾向で後半の質問が変わります。</span>
+            </div>
+            <div>
+              <strong>職種カード</strong>
+              <span>結果に合う仕事を一覧で見られます。</span>
+            </div>
+            <div>
+              <strong>保存なし</strong>
+              <span>回答はブラウザ内だけで処理します。</span>
+            </div>
+          </div>
+          <button id="start-btn" class="primary-btn">診断を始める</button>
+        </div>
+        <aside class="score-preview">
+          <p>6つの職業興味</p>
+          <ul>
+            <li><span>R</span> 現実型・ものづくり</li>
+            <li><span>I</span> 研究型・分析</li>
+            <li><span>A</span> 芸術型・表現</li>
+            <li><span>S</span> 社会型・支援</li>
+            <li><span>E</span> 企業型・推進</li>
+            <li><span>C</span> 慣習型・管理</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section id="quiz-screen" class="panel quiz hidden">
+        <div class="quiz-top">
+          <div>
+            <p class="eyebrow" id="phase-label">共通質問</p>
+            <h2 id="question-title">質問文</h2>
+          </div>
+          <div class="question-count">
+            <span id="current-number">1</span>/<span id="total-number">18</span>
+          </div>
+        </div>
+
+        <div class="progress-wrap">
+          <div id="progress-bar" class="progress-bar"></div>
+        </div>
+
+        <div id="answers" class="answers"></div>
+
+        <div class="quiz-actions">
+          <button id="back-btn" class="ghost-btn">戻る</button>
+          <button id="restart-btn" class="ghost-btn">最初から</button>
+        </div>
+      </section>
+
+      <section id="result-screen" class="hidden">
+        <div class="panel result-main">
+          <div class="result-head">
+            <div>
+              <p class="eyebrow">診断結果</p>
+              <h2 id="result-title">R-I型 技術実装タイプ</h2>
+              <p id="result-summary" class="lead"></p>
+            </div>
+            <div class="result-visual-wrap">
+              <div id="result-visual" class="result-visual" aria-hidden="true"></div>
+              <div id="type-badge" class="type-badge">RI</div>
+            </div>
+          </div>
+
+          <div class="result-layout">
+            <div class="chart-card">
+              <h3>RIASECスコア</h3>
+              <div id="score-bars" class="score-bars"></div>
+            </div>
+
+            <div class="advice-card">
+              <h3>このタイプの使い方</h3>
+              <p id="result-advice"></p>
+              <button id="copy-result-btn" class="secondary-btn">結果をコピー</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>向いている職種カード</h3>
+          <div id="job-cards" class="job-grid"></div>
+        </div>
+
+        <div class="panel">
+          <h3>集中した方がいい授業</h3>
+          <div id="class-cards" class="recommend-grid"></div>
+        </div>
+
+        <div class="panel">
+          <h3>取った方がいい資格</h3>
+          <div id="cert-cards" class="recommend-grid"></div>
+        </div>
+
+        <div class="panel">
+          <h3>大学中にやるとよいこと</h3>
+          <div id="action-list" class="action-list"></div>
+        </div>
+
+        <div class="bottom-actions">
+          <button id="retake-btn" class="primary-btn">もう一度診断する</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Prototype only. 診断結果は適性を断定するものではなく、職種探索の入口として使う想定です。</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

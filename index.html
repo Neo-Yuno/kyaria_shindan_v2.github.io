@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="RIASECの6軸から向いている職種、授業、資格、大学中にやることを提案する学生向けキャリア診断です。" />
+  <meta name="theme-color" content="#2563eb" />
   <title>職種マップ診断 | RIASECプロトタイプ</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -41,7 +43,7 @@
               <span>回答はブラウザ内だけで処理します。</span>
             </div>
           </div>
-          <button id="start-btn" class="primary-btn">診断を始める</button>
+          <button id="start-btn" class="primary-btn" type="button">診断を始める</button>
         </div>
         <aside class="score-preview">
           <p>6つの職業興味</p>
@@ -74,8 +76,8 @@
         <div id="answers" class="answers"></div>
 
         <div class="quiz-actions">
-          <button id="back-btn" class="ghost-btn">戻る</button>
-          <button id="restart-btn" class="ghost-btn">最初から</button>
+          <button id="back-btn" class="ghost-btn" type="button">戻る</button>
+          <button id="restart-btn" class="ghost-btn" type="button">最初から</button>
         </div>
       </section>
 
@@ -102,7 +104,7 @@
             <div class="advice-card">
               <h3>このタイプの使い方</h3>
               <p id="result-advice"></p>
-              <button id="copy-result-btn" class="secondary-btn">結果をコピー</button>
+              <button id="copy-result-btn" class="secondary-btn" type="button">結果をコピー</button>
             </div>
           </div>
         </div>
@@ -128,7 +130,7 @@
         </div>
 
         <div class="bottom-actions">
-          <button id="retake-btn" class="primary-btn">もう一度診断する</button>
+          <button id="retake-btn" class="primary-btn" type="button">もう一度診断する</button>
         </div>
       </section>
     </main>
@@ -138,6 +140,7 @@
     </footer>
   </div>
 
-  <script src="script.js"></script>
+  <noscript>この診断を使うにはJavaScriptを有効にしてください。</noscript>
+  <script src="script.js" defer></script>
 </body>
 </html>

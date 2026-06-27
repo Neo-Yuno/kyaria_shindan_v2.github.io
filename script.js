@@ -932,6 +932,7 @@ function renderQuestion() {
 
   answerOptions.forEach(option => {
     const btn = document.createElement("button");
+    btn.type = "button";
     btn.className = "answer-btn";
     btn.innerHTML = `<span>${option.label}</span><span class="points">${option.value}点</span>`;
     btn.addEventListener("click", () => answerQuestion(option.value));
@@ -1129,12 +1130,48 @@ function copyResult(profile, scores, topAxes) {
     ...profile.actions.map(([title, body]) => `・${title}：${body}`)
   ].join("\n");
 
-  navigator.clipboard.writeText(text).then(() => {
+  const showCopied = () => {
     el.copyResultBtn.textContent = "コピーしました";
     setTimeout(() => {
       el.copyResultBtn.textContent = "結果をコピー";
     }, 1400);
-  });
+  };
+
+  const showFailed = () => {
+    el.copyResultBtn.textContent = "コピーできませんでした";
+    setTimeout(() => {
+      el.copyResultBtn.textContent = "結果をコピー";
+    }, 1800);
+  };
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(showCopied).catch(() => {
+      fallbackCopyText(text) ? showCopied() : showFailed();
+    });
+    return;
+  }
+
+  fallbackCopyText(text) ? showCopied() : showFailed();
+}
+
+function fallbackCopyText(text) {
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.setAttribute("readonly", "");
+  textarea.style.position = "fixed";
+  textarea.style.left = "-9999px";
+  document.body.appendChild(textarea);
+  textarea.select();
+
+  let copied = false;
+  try {
+    copied = document.execCommand("copy");
+  } catch (error) {
+    copied = false;
+  }
+
+  document.body.removeChild(textarea);
+  return copied;
 }
 
 el.startBtn.addEventListener("click", initQuiz);
